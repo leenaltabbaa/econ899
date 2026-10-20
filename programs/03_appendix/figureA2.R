@@ -3,7 +3,7 @@
 # changes across event months because the panel ends in October 2026).
 #
 # Input:  data/data_for_analysis/county_month_panel.csv
-# Output: results/FigureA2.png
+# Output: results/Figure A2 - Raw share with a rule by months since announcement.png
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -20,4 +20,4 @@ fig <- ggplot(fig_data, aes(event_month, share)) +
   scale_y_continuous(labels = scales::percent) +
   labs(x = "Months relative to first major announcement",
        y = "Share of counties with a rule") + theme_paper
-ggsave(file.path(results_dir, "FigureA2.png"), fig, width = 9, height = 5, dpi = 300)
+ggsave(file.path(results_dir, "Figure A2 - Raw share with a rule by months since announcement.png"), fig, width = 9, height = 5, dpi = 300)

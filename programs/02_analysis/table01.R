@@ -1,7 +1,7 @@
 # Table 1: summary statistics for the county-month panel.
 #
 # Input:  data/data_for_analysis/county_units.csv, county_month_panel.csv
-# Output: results/Table01.csv, results/Table01.txt
+# Output: results/Table 1 - Summary statistics.csv, results/Table 1 - Summary statistics.txt
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -37,7 +37,7 @@ table01 <- tribble(
     as.character(median(units$months_announce_to_first_reg_any[!units$reg_before_announce_any], na.rm = TRUE))
 )
 
-write_csv(table01, file.path(results_dir, "Table01.csv"))
+write_csv(table01, file.path(results_dir, "Table 1 - Summary statistics.csv"))
 writeLines(c("Table 1: Summary statistics", "",
              sprintf("%-62s %10s", table01$Variable, table01$Value)),
-           file.path(results_dir, "Table01.txt"))
+           file.path(results_dir, "Table 1 - Summary statistics.txt"))

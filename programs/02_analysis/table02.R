@@ -4,7 +4,7 @@
 # rules only, (3) permanent rules only, (4) temporary rules only.
 #
 # Input:  results/estimates/did_estimates_summary.csv (from estimates.R)
-# Output: results/Table02.csv, results/Table02.txt
+# Output: results/Table 2 - Main results.csv, results/Table 2 - Main results.txt
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -37,9 +37,9 @@ notes <- c("Notes: Callaway and Sant'Anna (2021) estimates with not-yet-treated 
            "for pre-trends; analytical standard error).",
            "* p<0.10, ** p<0.05, *** p<0.01.")
 
-write_csv(table02, file.path(results_dir, "Table02.csv"))
+write_csv(table02, file.path(results_dir, "Table 2 - Main results.csv"))
 writeLines(c("Table 2: Effect of a first major data-centre announcement on local regulation", "",
              paste(sprintf("%-46s", names(table02)[1]), paste(sprintf("%22s", names(table02)[-1]), collapse = "")),
              apply(table02, 1, function(r) paste(sprintf("%-46s", r[1]), paste(sprintf("%22s", r[-1]), collapse = ""))),
              "", notes),
-           file.path(results_dir, "Table02.txt"))
+           file.path(results_dir, "Table 2 - Main results.txt"))

@@ -2,7 +2,7 @@
 # anticipation windows and samples.
 #
 # Input:  results/estimates/did_estimates_summary.csv (from 02_analysis/estimates.R)
-# Output: results/TableA1.csv, results/TableA1.txt
+# Output: results/Table A1 - Robustness checks.csv, results/Table A1 - Robustness checks.txt
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -23,7 +23,7 @@ tableA1 <- est %>%
             Counties = n_counties,
             `County-months` = n_obs)
 
-write_csv(tableA1, file.path(results_dir, "TableA1.csv"))
+write_csv(tableA1, file.path(results_dir, "Table A1 - Robustness checks.csv"))
 writeLines(c("Table A1: Robustness checks", "",
              local({ old <- options(width = 200); on.exit(options(old))
                capture.output(print(as.data.frame(tableA1), row.names = FALSE, right = FALSE)) }), "",
@@ -33,4 +33,4 @@ writeLines(c("Table A1: Robustness checks", "",
              "Counties are those used by did, which drops counties already treated in the first month",
              "once anticipation is allowed for.",
              "* p<0.10, ** p<0.05, *** p<0.01."),
-           file.path(results_dir, "TableA1.txt"))
+           file.path(results_dir, "Table A1 - Robustness checks.txt"))

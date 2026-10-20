@@ -1,7 +1,7 @@
 # Figure A1: number of counties with their first major data-centre announcement, by month.
 #
 # Input:  data/data_for_analysis/county_units.csv
-# Output: results/FigureA1.png
+# Output: results/Figure A1 - Announcements by month.png
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -12,4 +12,4 @@ fig <- units %>% count(first_major_month) %>%
   geom_col(fill = col_main, width = 25) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   labs(x = NULL, y = "Counties with first major announcement") + theme_paper
-ggsave(file.path(results_dir, "FigureA1.png"), fig, width = 9, height = 4.5, dpi = 300)
+ggsave(file.path(results_dir, "Figure A1 - Announcements by month.png"), fig, width = 9, height = 4.5, dpi = 300)

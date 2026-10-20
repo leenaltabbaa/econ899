@@ -1,4 +1,4 @@
-setwd("~/Desktop/ECON 899 GitHub"); source("programs/01_main.R")# Main program: runs every program in the correct order and reproduces all
+# Main program: runs every program in the correct order and reproduces all
 # tables and figures in the paper and its appendix.
 #
 # Before the first run: run programs/00_setup.R once.

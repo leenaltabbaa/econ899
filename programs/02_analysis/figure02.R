@@ -3,7 +3,7 @@
 # announcement (main specification, 95% simultaneous confidence bands).
 #
 # Input:  results/estimates/did_estimates.rds (from estimates.R)
-# Output: results/Figure02.png
+# Output: results/Figure 2 - Main event study.png
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -23,4 +23,4 @@ fig <- ggplot(fig_data, aes(month, att, colour = period_type)) +
   scale_colour_manual(values = c(col_main, col_pre), name = NULL) +
   labs(x = "Months relative to first major announcement",
        y = "Effect on probability of having a rule") + theme_paper
-ggsave(file.path(results_dir, "Figure02.png"), fig, width = 9, height = 5, dpi = 300)
+ggsave(file.path(results_dir, "Figure 2 - Main event study.png"), fig, width = 9, height = 5, dpi = 300)

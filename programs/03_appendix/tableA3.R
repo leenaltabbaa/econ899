@@ -3,7 +3,7 @@
 # treatment, so they add no spurious effect.
 #
 # Input:  data/data_for_analysis/county_units.csv, regulations_merged.csv
-# Output: results/TableA3.csv, results/TableA3.txt
+# Output: results/Table A3 - Counties that regulated before their announcement.csv, results/Table A3 - Counties that regulated before their announcement.txt
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -22,8 +22,8 @@ tableA3 <- early %>%
             `Adopted by` = sapply(first_ids, function(i) paste(unique(recs$jurisdiction[recs$action_id %in% i]), collapse = "; ")),
             Type = sapply(first_ids, function(i) paste(unique(sub("_regulation", "", recs$regulation_category[recs$action_id %in% i])), collapse = "; ")))
 
-write_csv(tableA3, file.path(results_dir, "TableA3.csv"))
+write_csv(tableA3, file.path(results_dir, "Table A3 - Counties that regulated before their announcement.csv"))
 writeLines(c("Table A3: Counties whose first rule predates their first major announcement", "",
              capture.output(print(as.data.frame(tableA3), row.names = FALSE, right = FALSE)), "",
              "* Year-only date, placed in July."),
-           file.path(results_dir, "TableA3.txt"))
+           file.path(results_dir, "Table A3 - Counties that regulated before their announcement.txt"))

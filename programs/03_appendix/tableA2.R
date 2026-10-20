@@ -2,7 +2,7 @@
 # count as adopted rules.
 #
 # Input:  data/data_for_analysis/regulations_merged.csv
-# Output: results/TableA2.csv, results/TableA2.txt
+# Output: results/Table A2 - Regulation records by source and type.csv, results/Table A2 - Regulation records by source and type.txt
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -22,9 +22,9 @@ tableA2 <- bind_rows(tableA2, tibble(Source = "Total", Level = "", Type = "",
                                      `Counted as adopted` = sum(tableA2$`Counted as adopted`)))
 stopifnot(tail(tableA2$`Counted as adopted`, 1) == 225)
 
-write_csv(tableA2, file.path(results_dir, "TableA2.csv"))
+write_csv(tableA2, file.path(results_dir, "Table A2 - Regulation records by source and type.csv"))
 writeLines(c("Table A2: Regulation records by source, level and type", "",
              capture.output(print(as.data.frame(tableA2), row.names = FALSE, right = FALSE)), "",
              "Notes: Records not counted are proposals, failed votes, pending or unclear actions,",
              "permissive changes, non-binding actions and duplicates of FAS records."),
-           file.path(results_dir, "TableA2.txt"))
+           file.path(results_dir, "Table A2 - Regulation records by source and type.txt"))
