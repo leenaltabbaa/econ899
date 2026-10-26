@@ -2,7 +2,7 @@
 # anticipation windows and samples.
 #
 # Input:  results/estimates/did_estimates_summary.csv (from 02_analysis/estimates.R)
-# Output: results/Table A1 - Robustness checks.csv, results/Table A1 - Robustness checks.txt
+# Output: results/Table A1 - Robustness checks.csv, .txt and .docx
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -34,3 +34,18 @@ writeLines(c("Table A1: Robustness checks", "",
              "once anticipation is allowed for.",
              "* p<0.10, ** p<0.05, *** p<0.01."),
            file.path(results_dir, "Table A1 - Robustness checks.txt"))
+
+word_rows <- estimate_rows(est)
+names(word_rows) <- c(" ", "Main", "Excluding mixed rules", "No anticipation",
+                      "Six months anticipation", "Excluding year-only dates")
+word_table(word_rows, file.path(results_dir, "Table A1 - Robustness checks.docx"),
+           title = "Table A1: Robustness checks",
+           spanner = "Dependent variable: any data center rule in force (0/1)", numbered = TRUE,
+           se_rows = c(2, 4, 6), bottom_rows = 7:10,
+           notes = c(paste("Notes: Callaway and Sant'Anna (2021) estimates with not-yet-treated counties as the",
+                           "comparison group. The outcome is any data center rule by the county or a municipality in it.",
+                           "Standard errors (in parentheses) from the multiplier bootstrap, clustered by county. The",
+                           "pre-announcement average is the mean event-study estimate over months -12 to",
+                           "-(anticipation + 1). Counties are those used by did, which drops counties already treated",
+                           "in the first month once anticipation is allowed for."),
+                     "* p<0.10, ** p<0.05, *** p<0.01."))

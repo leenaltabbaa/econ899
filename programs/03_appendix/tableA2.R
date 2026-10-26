@@ -2,7 +2,7 @@
 # count as adopted rules.
 #
 # Input:  data/data_for_analysis/regulations_merged.csv
-# Output: results/Table A2 - Regulation records by source and type.csv, results/Table A2 - Regulation records by source and type.txt
+# Output: results/Table A2 - Regulation records by source and type.csv, .txt and .docx
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -28,3 +28,8 @@ writeLines(c("Table A2: Regulation records by source, level and type", "",
              "Notes: Records not counted are proposals, failed votes, pending or unclear actions,",
              "permissive changes, non-binding actions and duplicates of FAS records."),
            file.path(results_dir, "Table A2 - Regulation records by source and type.txt"))
+word_table(tableA2, file.path(results_dir, "Table A2 - Regulation records by source and type.docx"),
+           title = "Table A2: Regulation records by source, level and type",
+           bottom_rows = nrow(tableA2),
+           notes = paste("Notes: Records not counted are proposals, failed votes, pending or unclear actions,",
+                         "permissive changes, non-binding actions and duplicates of FAS records."))

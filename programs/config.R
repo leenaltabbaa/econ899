@@ -70,4 +70,7 @@ theme_paper <- theme_minimal(base_size = 12) +
   theme(panel.grid.minor = element_blank(), legend.position = "bottom")
 col_main <- "#1f5fa8"; col_second <- "#d9822b"; col_pre <- "grey40"
 
+# Word (.docx) versions of the tables
+source(file.path(programs_dir, "word_tables.R"))
+
 CONFIG_LOADED <- TRUE

@@ -3,7 +3,7 @@
 # treatment, so they add no spurious effect.
 #
 # Input:  data/data_for_analysis/county_units.csv, regulations_merged.csv
-# Output: results/Table A3 - Counties that regulated before their announcement.csv, results/Table A3 - Counties that regulated before their announcement.txt
+# Output: results/Table A3 - Counties that regulated before their announcement.csv, .txt and .docx
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -27,3 +27,6 @@ writeLines(c("Table A3: Counties whose first rule predates their first major ann
              capture.output(print(as.data.frame(tableA3), row.names = FALSE, right = FALSE)), "",
              "* Year-only date, placed in July."),
            file.path(results_dir, "Table A3 - Counties that regulated before their announcement.txt"))
+word_table(tableA3, file.path(results_dir, "Table A3 - Counties that regulated before their announcement.docx"),
+           title = "Table A3: Counties whose first rule predates their first major announcement",
+           notes = "Notes: * Year-only date, placed in July.")

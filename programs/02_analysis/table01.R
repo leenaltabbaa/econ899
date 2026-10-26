@@ -1,7 +1,7 @@
 # Table 1: summary statistics for the county-month panel.
 #
 # Input:  data/data_for_analysis/county_units.csv, county_month_panel.csv
-# Output: results/Table 1 - Summary statistics.csv, results/Table 1 - Summary statistics.txt
+# Output: results/Table 1 - Summary statistics.csv, .txt and .docx
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -41,3 +41,6 @@ write_csv(table01, file.path(results_dir, "Table 1 - Summary statistics.csv"))
 writeLines(c("Table 1: Summary statistics", "",
              sprintf("%-62s %10s", table01$Variable, table01$Value)),
            file.path(results_dir, "Table 1 - Summary statistics.txt"))
+word_table(rename(table01, ` ` = Variable), file.path(results_dir, "Table 1 - Summary statistics.docx"),
+           title = "Table 1: Summary statistics",
+           notes = "Notes: Panel of counties whose first major data center announcement (at least 450 MW or $3 billion) is in January 2020 or later.")

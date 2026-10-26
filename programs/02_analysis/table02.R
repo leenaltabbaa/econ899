@@ -4,7 +4,7 @@
 # rules only, (3) permanent rules only, (4) temporary rules only.
 #
 # Input:  results/estimates/did_estimates_summary.csv (from estimates.R)
-# Output: results/Table 2 - Main results.csv, results/Table 2 - Main results.txt
+# Output: results/Table 2 - Main results.csv, .txt and .docx
 
 if (!exists("CONFIG_LOADED")) source("programs/config.R")
 
@@ -43,3 +43,13 @@ writeLines(c("Table 2: Effect of a first major data-centre announcement on local
              apply(table02, 1, function(r) paste(sprintf("%-46s", r[1]), paste(sprintf("%22s", r[-1]), collapse = ""))),
              "", notes),
            file.path(results_dir, "Table 2 - Main results.txt"))
+
+word_rows <- estimate_rows(est)
+word_rows$Row[5] <- "Pre-announcement average (months -12 to -4)"
+names(word_rows) <- c(" ", "Any rule", "County government", "Permanent", "Temporary")
+word_table(word_rows, file.path(results_dir, "Table 2 - Main results.docx"),
+           title = "Table 2: Effect of a first major data center announcement on local regulation",
+           spanner = "Dependent variable: data center rule in force (0/1)", numbered = TRUE,
+           se_rows = c(2, 4, 6), bottom_rows = 7:10,
+           notes = c(paste(sub("^Notes: ", "", head(notes, -1)), collapse = " ") %>% paste("Notes:", .),
+                     tail(notes, 1)))
