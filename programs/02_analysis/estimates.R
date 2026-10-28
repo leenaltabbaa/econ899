@@ -16,11 +16,11 @@ stopifnot(n_distinct(panel$unit_id) == 232, nrow(panel) == 232 * 82)
 
 specs <- tribble(
   ~name,         ~label,                                ~yname,            ~anticipation,     ~sample,
-  "main",        "Any rule, county or municipality",    "reg_any_any",     main_anticipation, "all",
-  "county_gov",  "County-government rules only",        "reg_any_cgov",    main_anticipation, "all",
-  "permanent",   "Permanent rules only",                "reg_perm_any",    main_anticipation, "all",
-  "temporary",   "Temporary rules only (moratoria)",    "reg_temp_any",    main_anticipation, "all",
-  "no_mixed",    "Excluding mixed-direction rules",     "reg_any_nomixed", main_anticipation, "all",
+  "main",        "Any regulation, county or municipality",    "reg_any_any",     main_anticipation, "all",
+  "county_gov",  "County-government regulations only",        "reg_any_cgov",    main_anticipation, "all",
+  "permanent",   "Permanent regulations only",                "reg_perm_any",    main_anticipation, "all",
+  "temporary",   "Temporary regulations only (moratoria)",    "reg_temp_any",    main_anticipation, "all",
+  "no_mixed",    "Excluding mixed-direction regulations",     "reg_any_nomixed", main_anticipation, "all",
   "antic_0",     "No anticipation",                     "reg_any_any",     0L,                "all",
   "antic_6",     "Six months of anticipation",          "reg_any_any",     6L,                "all",
   "month_dates", "Excluding year-only announcement dates", "reg_any_any",  main_anticipation, "month_dates"

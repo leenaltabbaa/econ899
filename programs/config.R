@@ -82,7 +82,7 @@ theme_paper <- theme_classic(base_size = 10, base_family = "Times New Roman") +
 col_main <- "#1f4e79"; col_second <- "#c55a11"; col_pre <- "grey55"
 fig_width <- 6.5
 
-# Shared look of the event-study figures (Figure 2 and Figure A3), following the usual
+# Shared look of the event-study figures (Figure 3 and Figure A3), following the usual
 # conventions: event time on the x axis, a line at zero, a dashed line at the
 # announcement, a shaded anticipation window and pointwise-style error bars.
 # `bands` holds one row per panel with its anticipation window and the overall ATT text.
@@ -99,7 +99,7 @@ event_study_layers <- function(bands) {
     scale_x_continuous(breaks = seq(-12, 24, 6)),
     scale_y_continuous(labels = function(x) 100 * x),
     labs(x = "Months since first major announcement",
-         y = "Effect on chance a rule is in force\n(percentage points)")
+         y = "Effect on chance a regulation\nis in force (percentage points)")
   )
 }
 att_text <- function(att, se) sprintf("Overall effect: %.1f pp (SE %.1f)", 100 * att, 100 * se)

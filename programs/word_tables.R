@@ -3,7 +3,8 @@
 # and notes below. Sourced by config.R; used by the table programs.
 
 word_table <- function(df, path, title, notes = NULL, spanner = NULL, numbered = FALSE,
-                       se_rows = integer(0), bottom_rows = integer(0), width = 6.5) {
+                       se_rows = integer(0), bottom_rows = integer(0), width = 6.5,
+                       align_values = "center") {
   df <- as.data.frame(df, stringsAsFactors = FALSE, check.names = FALSE)
   df[] <- lapply(df, function(x) ifelse(is.na(x), "", as.character(x)))
   k <- ncol(df)
@@ -47,7 +48,6 @@ word_table <- function(df, path, title, notes = NULL, spanner = NULL, numbered =
   if (length(coef_rows)) ft <- flextable::padding(ft, i = coef_rows, padding.top = 5)
   if (length(bottom_rows)) ft <- flextable::padding(ft, i = min(bottom_rows), padding.top = 8)
 
-  # Columns sized to their contents, then stretched or shrunk to the page width
   # Column widths follow the contents (with a spanner, only the body: headers may wrap).
   # A table that is too wide gives up the space from its widest column; a narrow one
   # is stretched to the page width.
@@ -61,6 +61,15 @@ word_table <- function(df, path, title, notes = NULL, spanner = NULL, numbered =
   }
   w  <- w * width / sum(w)
   ft <- flextable::width(ft, width = w)
+  # Summary statistics: values right-justified so they line up, with the block of values
+  # centred under its (centred) heading
+  if (align_values == "right") {
+    body_w <- flextable::dim_pretty(ft, part = "body")$widths
+    for (j in which(!is_text)) {
+      ft <- flextable::align(ft, j = j, align = "right", part = "body")
+      ft <- flextable::padding(ft, j = j, padding.right = max(72 * (w[j] - body_w[j]) / 2, 4), part = "body")
+    }
+  }
   ft <- flextable::height_all(ft, height = 0.17, part = "all")
   ft <- flextable::hrule(ft, rule = "atleast", part = "all")
 

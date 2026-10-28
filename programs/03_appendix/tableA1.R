@@ -27,7 +27,7 @@ write_csv(tableA1, file.path(results_dir, "Table A1 - Robustness checks.csv"))
 writeLines(c("Table A1: Robustness checks", "",
              local({ old <- options(width = 200); on.exit(options(old))
                capture.output(print(as.data.frame(tableA1), row.names = FALSE, right = FALSE)) }), "",
-             "Notes: Outcome is any data-centre rule by the county or a municipality in it, except where",
+             "Notes: Outcome is any data-centre regulation by the county or a municipality in it, except where",
              "stated. Standard errors from the multiplier bootstrap, clustered by county. Pre-period avg. is",
              "the mean event-study estimate over months -12 to -(anticipation + 1) before the announcement.",
              "Counties are those used by did, which drops counties already treated in the first month",
@@ -36,14 +36,14 @@ writeLines(c("Table A1: Robustness checks", "",
            file.path(results_dir, "Table A1 - Robustness checks.txt"))
 
 word_rows <- estimate_rows(est)
-names(word_rows) <- c(" ", "Main", "Excluding mixed rules", "No anticipation",
+names(word_rows) <- c(" ", "Main", "Excluding mixed regulations", "No anticipation",
                       "Six months anticipation", "Excluding year-only dates")
 word_table(word_rows, file.path(results_dir, "Table A1 - Robustness checks.docx"),
            title = "Table A1: Robustness checks",
-           spanner = "Dependent variable: any data center rule in force (0/1)", numbered = TRUE,
+           spanner = "Dependent variable: any data center regulation in force (0/1)", numbered = TRUE,
            se_rows = c(2, 4, 6), bottom_rows = 7:10,
            notes = c(paste("Notes: Callaway and Sant'Anna (2021) estimates with not-yet-treated counties as the",
-                           "comparison group. The outcome is any data center rule by the county or a municipality in it.",
+                           "comparison group. The outcome is any data center regulation by the county or a municipality in it.",
                            "Standard errors (in parentheses) from the multiplier bootstrap, clustered by county. The",
                            "pre-announcement average is the mean event-study estimate over months -12 to",
                            "-(anticipation + 1). Counties are those used by did, which drops counties already treated",
