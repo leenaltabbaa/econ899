@@ -167,16 +167,18 @@ The provided code reproduces:
 
 | Figure/Table # | Program | Output file | Note |
 |---|---|---|---|
-| Table 1 | `02_analysis/table01.R` | `results/Table 1 - Summary statistics.csv`, `.txt` | Summary statistics |
-| Table 2 | `02_analysis/table02.R` | `results/Table 2 - Main results.csv`, `.txt` | Main DiD results |
-| Figure 1 | `02_analysis/figure01.R` | `results/Figure 1 - Data center rules over time.png` | Share of counties with a rule over time |
-| Figure 2 | `02_analysis/figure02.R` | `results/Figure 2 - Main event study.png` | Main event study |
-| Table A1 | `03_appendix/tableA1.R` | `results/Table A1 - Robustness checks.csv`, `.txt` | Robustness checks |
-| Table A2 | `03_appendix/tableA2.R` | `results/Table A2 - Regulation records by source and type.csv`, `.txt` | Regulation records by source and type |
-| Table A3 | `03_appendix/tableA3.R` | `results/Table A3 - Counties that regulated before their announcement.csv`, `.txt` | Counties with a rule before their announcement |
+| Table 1 | `02_analysis/table01.R` | `results/Table 1 - Summary statistics.csv`, `.txt`, `.docx` | Summary statistics |
+| Table 2 | `02_analysis/table02.R` | `results/Table 2 - Main results.csv`, `.txt`, `.docx` | Main DiD results |
+| Figure 1 | `02_analysis/figure01.R` | `results/Figure 1 - Study timeline.png` | Research design timeline |
+| Figure 2 | `02_analysis/figure02.R` | `results/Figure 2 - Data center regulations over time.png` | Share of counties with a regulation over time |
+| Figure 3 | `02_analysis/figure03.R` | `results/Figure 3 - Main event study.png` | Main event study |
+| Table A1 | `03_appendix/tableA1.R` | `results/Table A1 - Robustness checks.csv`, `.txt`, `.docx` | Robustness checks |
+| Table A2 | `03_appendix/tableA2.R` | `results/Table A2 - Regulation records by source and type.csv`, `.txt`, `.docx` | Regulation records by source and type |
+| Table A3 | `03_appendix/tableA3.R` | `results/Table A3 - Counties that regulated before their announcement.csv`, `.txt`, `.docx` | Counties with a regulation before their announcement |
 | Figure A1 | `03_appendix/figureA1.R` | `results/Figure A1 - Announcements by month.png` | Announcements by month |
-| Figure A2 | `03_appendix/figureA2.R` | `results/Figure A2 - Raw share with a rule by months since announcement.png` | Raw share with a rule, by months since announcement |
+| Figure A2 | `03_appendix/figureA2.R` | `results/Figure A2 - Raw share with a regulation by months since announcement.png` | Raw share with a regulation, by months since announcement |
 | Figure A3 | `03_appendix/figureA3.R` | `results/Figure A3 - Event studies for all specifications.png` | Event studies, all specifications |
+| Figure A4 | `03_appendix/figureA4.R` | `results/Figure A4 - Counties observed by months since announcement.png` | Counties observed, by months since announcement |
 
 ## Use of AI tools
 
