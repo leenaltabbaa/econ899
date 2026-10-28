@@ -15,9 +15,13 @@ fig_data <- panel %>%
   summarise(share = mean(reg_any_any), counties = n(), .by = event_month)
 
 fig <- ggplot(fig_data, aes(event_month, share)) +
-  geom_vline(xintercept = -0.5, linetype = "dashed", colour = "grey50") +
-  geom_line(colour = col_main, linewidth = 0.9) + geom_point(colour = col_main, size = 1.5) +
-  scale_y_continuous(labels = scales::percent) +
-  labs(x = "Months relative to first major announcement",
-       y = "Share of counties with a rule") + theme_paper
-ggsave(file.path(results_dir, "Figure A2 - Raw share with a rule by months since announcement.png"), fig, width = 9, height = 5, dpi = 300)
+  geom_vline(xintercept = -0.5, linetype = "dashed", colour = "grey40", linewidth = 0.3) +
+  geom_line(colour = col_main, linewidth = 0.6) +
+  geom_point(shape = 21, colour = col_main, fill = "white", size = 1.4, stroke = 0.4) +
+  annotate("text", x = -0.9, y = max(fig_data$share), label = "Announcement", hjust = 1,
+           vjust = 1, size = 2.8, family = "Times New Roman") +
+  scale_x_continuous(breaks = seq(-12, 24, 6)) +
+  scale_y_continuous(labels = function(x) 100 * x, limits = c(0, NA)) +
+  labs(title = "Figure A2: Raw Share of Counties with a Rule in Force by Months since Announcement", x = "Months since first major announcement",
+       y = "Share of counties with a\nrule in force (%)") + theme_paper
+ggsave(file.path(results_dir, "Figure A2 - Raw share with a rule by months since announcement.png"), fig, width = fig_width, height = 3.8, dpi = 300)

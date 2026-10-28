@@ -10,17 +10,13 @@ if (!exists("CONFIG_LOADED")) source("programs/config.R")
 est <- readRDS(file.path(results_dir, "estimates", "did_estimates.rds"))$estimates$main
 es  <- est$dynamic
 fig_data <- tibble(month = es$egt, att = es$att.egt, se = es$se.egt) %>%
-  mutate(lo = att - es$crit.val.egt * se, hi = att + es$crit.val.egt * se,
-         period_type = if_else(month >= -est$spec$anticipation,
-                               paste0("From ", est$spec$anticipation, " months before announcement"),
-                               "Pre-announcement"))
+  mutate(lo = att - es$crit.val.egt * se, hi = att + es$crit.val.egt * se)
+bands <- tibble(anticipation = est$spec$anticipation,
+                att_text = att_text(est$simple$overall.att, est$simple$overall.se))
 
-fig <- ggplot(fig_data, aes(month, att, colour = period_type)) +
-  geom_hline(yintercept = 0, colour = "grey50") +
-  geom_vline(xintercept = -0.5, linetype = "dashed", colour = "grey50") +
-  geom_errorbar(aes(ymin = lo, ymax = hi), width = 0.3) +
-  geom_point(size = 1.8) +
-  scale_colour_manual(values = c(col_main, col_pre), name = NULL) +
-  labs(x = "Months relative to first major announcement",
-       y = "Effect on probability of having a rule") + theme_paper
-ggsave(file.path(results_dir, "Figure 2 - Main event study.png"), fig, width = 9, height = 5, dpi = 300)
+fig <- ggplot(fig_data, aes(month, att)) +
+  event_study_layers(bands) +
+  annotate("text", x = -0.9, y = max(fig_data$hi), label = "Announcement", hjust = 1,
+           vjust = 1, size = 2.8, family = "Times New Roman") +
+  labs(title = "Figure 2: Main Event Study of Data Center Rules after a Major Announcement") + theme_paper
+ggsave(file.path(results_dir, "Figure 2 - Main event study.png"), fig, width = fig_width, height = 3.8, dpi = 300)

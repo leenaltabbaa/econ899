@@ -66,9 +66,43 @@ stars <- function(est, se) {
   ifelse(p < 0.01, "***", ifelse(p < 0.05, "**", ifelse(p < 0.10, "*", "")))
 }
 
-theme_paper <- theme_minimal(base_size = 12) +
-  theme(panel.grid.minor = element_blank(), legend.position = "bottom")
-col_main <- "#1f5fa8"; col_second <- "#d9822b"; col_pre <- "grey40"
+# Figure style, matching the tables: Times New Roman, black text, white background, black axes, light
+# horizontal grid lines only, legend below. Figures are saved at the paper's text width
+# (fig_width inches) so the text prints at its real size.
+theme_paper <- theme_classic(base_size = 10, base_family = "Times New Roman") +
+  theme(panel.grid.major.y = element_line(colour = "grey90", linewidth = 0.3),
+        axis.line = element_line(colour = "black", linewidth = 0.3),
+        axis.ticks = element_line(colour = "black", linewidth = 0.3),
+        axis.text = element_text(colour = "black"),
+        strip.background = element_blank(), strip.text = element_text(face = "plain"),
+        text = element_text(colour = "black"),
+        plot.title = element_text(face = "plain", size = 11, hjust = 0.5),
+        plot.title.position = "plot",
+        legend.position = "bottom", legend.key.width = unit(1.5, "lines"))
+col_main <- "#1f4e79"; col_second <- "#c55a11"; col_pre <- "grey55"
+fig_width <- 6.5
+
+# Shared look of the event-study figures (Figure 2 and Figure A3), following the usual
+# conventions: event time on the x axis, a line at zero, a dashed line at the
+# announcement, a shaded anticipation window and pointwise-style error bars.
+# `bands` holds one row per panel with its anticipation window and the overall ATT text.
+event_study_layers <- function(bands) {
+  list(
+    geom_rect(data = bands, aes(xmin = -anticipation - 0.5, xmax = -0.5, ymin = -Inf, ymax = Inf),
+              inherit.aes = FALSE, fill = "grey92"),
+    geom_hline(yintercept = 0, colour = "grey40", linewidth = 0.3),
+    geom_vline(xintercept = -0.5, linetype = "dashed", colour = "grey40", linewidth = 0.3),
+    geom_errorbar(aes(ymin = lo, ymax = hi), width = 0.4, linewidth = 0.3, colour = col_main),
+    geom_point(shape = 21, size = 1.4, stroke = 0.4, colour = col_main, fill = "white"),
+    geom_text(data = bands, aes(x = Inf, y = -Inf, label = att_text), inherit.aes = FALSE,
+              hjust = 1.05, vjust = -0.6, size = 2.8, family = "Times New Roman"),
+    scale_x_continuous(breaks = seq(-12, 24, 6)),
+    scale_y_continuous(labels = function(x) 100 * x),
+    labs(x = "Months since first major announcement",
+         y = "Effect on chance a rule is in force\n(percentage points)")
+  )
+}
+att_text <- function(att, se) sprintf("Overall effect: %.1f pp (SE %.1f)", 100 * att, 100 * se)
 
 # Word (.docx) versions of the tables
 source(file.path(programs_dir, "word_tables.R"))
