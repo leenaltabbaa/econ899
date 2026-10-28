@@ -36,15 +36,21 @@ for (j in seq_along(cols)) {
                         format(e$n_obs, big.mark = ","), as.character(e$n_cohorts))
 }
 notes <- c("Notes: Callaway and Sant'Anna (2021) estimates with not-yet-treated counties as the comparison",
-           "group. The outcome equals 1 from the month a regulation of the stated type is first adopted. Standard",
-           "errors (in parentheses) from the multiplier bootstrap, clustered by county. The pre-announcement",
-           "average is the mean event-study estimate over months -12 to -4 before the announcement (a test",
-           "for pre-trends; analytical standard error). No control variables. The mean of the dependent",
+           "group. The sample is the 232 counties whose first major data center announcement (at least 450 MW",
+           "or $3 billion) is between January 2020 and July 2026, observed monthly from January 2020 to October",
+           "2026. Each column is a separate estimate. The outcome equals 1 from the month a regulation is first",
+           "adopted: any regulation by the county or a municipality in it (1), county-government regulations",
+           "only (2), permanent regulations only (3), or temporary regulations such as moratoria only (4).",
+           "Anticipation of 3 months means that the 3 months before an announcement are not counted as",
+           "pre-announcement months. No control variables or fixed effects are included; comparing each cohort",
+           "with not-yet-treated counties in the same months plays that role. Standard errors (in parentheses)",
+           "are from the multiplier bootstrap, clustered by county. The pre-announcement average is the mean",
+           "event-study estimate over months -12 to -4 (a test for pre-trends). The mean of the dependent",
            "variable is the share of all county-months with a regulation of that type in force.",
            "* p<0.10, ** p<0.05, *** p<0.01.")
 
 write_csv(table02, file.path(results_dir, "Table 2 - Main results.csv"))
-writeLines(c("Table 2: Effect of a first major data-centre announcement on local regulation", "",
+writeLines(c("Table 2: Effect of a first major data center announcement on local regulation", "",
              paste(sprintf("%-46s", names(table02)[1]), paste(sprintf("%22s", names(table02)[-1]), collapse = "")),
              apply(table02, 1, function(r) paste(sprintf("%-46s", r[1]), paste(sprintf("%22s", r[-1]), collapse = ""))),
              "", notes),
