@@ -36,7 +36,7 @@ table01 <- tribble(
   "C. Sample",                                                   "",
   "  Counties",                                                  as.character(nrow(units)),
   "  Months (January 2020 to October 2026)",                     as.character(n_distinct(panel$period)),
-  "  County-month observations",                                 format(nrow(panel), big.mark = ",")
+  "  Observations (county-months)",                               format(nrow(panel), big.mark = ",")
 )
 
 write_csv(table01, file.path(results_dir, "Table 1 - Summary statistics.csv"))
@@ -47,7 +47,7 @@ word_table(rename(table01, ` ` = Variable, `All panel counties` = Value),
            file.path(results_dir, "Table 1 - Summary statistics.docx"),
            title = "Table 1: Summary statistics", align_values = "right",
            notes = paste("Notes: Counties whose first major data center announcement (at least 450 MW or",
-                         "$3 billion, from Server Country) is in January 2020 or later. Regulations are adopted local",
+                         "$3 billion, from Server Country) is between January 2020 and July 2026. Regulations are adopted local",
                          "data center regulations from the FAS ordinance database and a web search through",
                          "October 13, 2026, assigned to the county that contains the adopting government",
                          "(the county itself or a city or township in it). Temporary regulations are moratoria and",

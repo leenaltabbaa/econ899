@@ -21,7 +21,7 @@ tableA1 <- est %>%
             `Pre-period avg.` = paste0(fmt(pre_att), stars(pre_att, pre_se)),
             `Pre SE` = paste0("(", fmt(pre_se), ")"),
             Counties = n_counties,
-            `County-months` = n_obs)
+            `Observations (county-months)` = n_obs)
 
 write_csv(tableA1, file.path(results_dir, "Table A1 - Robustness checks.csv"))
 writeLines(c("Table A1: Robustness checks", "",

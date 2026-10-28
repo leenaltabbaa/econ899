@@ -22,7 +22,7 @@ fmt <- function(x, d = 3) formatC(x, format = "f", digits = d)
 table02 <- tibble(
   Row = c("Announcement effect (ATT)", "", "Event-study average effect", "",
           "Pre-announcement average (months -12 to -4)", "",
-          "Mean of dependent variable", "Anticipation (months)", "Counties", "County-months",
+          "Mean of dependent variable", "Anticipation (months)", "Counties", "Observations (county-months)",
           "Treatment cohorts (months)"),
   `(1) Any regulation` = NA_character_, `(2) County government` = NA_character_,
   `(3) Permanent` = NA_character_, `(4) Temporary` = NA_character_

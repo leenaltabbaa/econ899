@@ -90,7 +90,7 @@ estimate_rows <- function(est) {
   fmt <- function(x, d = 3) formatC(x, format = "f", digits = d)
   out <- tibble(Row = c("Announcement effect (ATT)", "", "Event-study average effect", "",
                         "Pre-announcement average", "",
-                        "Anticipation (months)", "Counties", "County-months", "Treatment cohorts"))
+                        "Anticipation (months)", "Counties", "Observations (county-months)", "Treatment cohorts"))
   for (j in seq_len(nrow(est))) {
     e <- est[j, ]
     out[[e$name]] <- c(paste0(fmt(e$att), stars(e$att, e$se)), paste0("(", fmt(e$se), ")"),
