@@ -91,6 +91,8 @@ county searched; documentation only, not read by the code).
 - R (code was last run with version 4.6.1)
   - `readr`, `dplyr`, `tidyr`, `stringr`, `ggplot2`, `scales`
   - `did` (Callaway and Sant'Anna, 2021)
+  - `fixest` (two-way fixed effects, Table A4 and Figure A6)
+  - `flextable`, `officer` (Word versions of the tables)
   - The program `programs/00_setup.R` installs all of these from CRAN and should be run once. The versions used are listed in `results/session_info.txt` after a run.
 
 ### Controlled Randomness
@@ -175,11 +177,13 @@ The provided code reproduces:
 | Table A1 | `03_appendix/tableA1.R` | `results/Table A1 - Robustness checks.csv`, `.txt`, `.docx` | Robustness checks |
 | Table A2 | `03_appendix/tableA2.R` | `results/Table A2 - Regulation records by source and type.csv`, `.txt`, `.docx` | Regulation records by source and type |
 | Table A3 | `03_appendix/tableA3.R` | `results/Table A3 - Counties that regulated before their announcement.csv`, `.txt`, `.docx` | Counties with a regulation before their announcement |
+| Table A4 | `03_appendix/tableA4.R` | `results/Table A4 - Two-way fixed effects.csv`, `.txt`, `.docx` | Two-way fixed effects and Callaway-Sant'Anna estimates |
 | Figure A1 | `03_appendix/figureA1.R` | `results/Figure A1 - Announcements by month.png` | Announcements by month |
 | Figure A2 | `03_appendix/figureA2.R` | `results/Figure A2 - Raw share with a regulation by months since announcement.png` | Raw share with a regulation, by months since announcement |
 | Figure A3 | `03_appendix/figureA3.R` | `results/Figure A3 - Event studies for all specifications.png` | Event studies, all specifications |
 | Figure A4 | `03_appendix/figureA4.R` | `results/Figure A4 - Counties observed by months since announcement.png` | Counties observed, by months since announcement |
 | Figure A5 | `03_appendix/figureA5.R` | `results/Figure A5 - Comparison group for the July 2024 cohort.png` | Comparison group for the July 2024 cohort, by months since announcement |
+| Figure A6 | `03_appendix/figureA6.R` | `results/Figure A6 - Two-way fixed effects event study.png` | Two-way fixed effects and Callaway-Sant'Anna event studies |
 
 ## Use of AI tools
 

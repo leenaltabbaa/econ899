@@ -3,7 +3,7 @@
 # Running it again is harmless (it only installs packages that are missing).
 
 packages <- c("readr", "dplyr", "tidyr", "stringr", "ggplot2", "scales", "did",
-              "flextable", "officer")
+              "flextable", "officer", "fixest")
 missing  <- packages[!vapply(packages, requireNamespace, logical(1), quietly = TRUE)]
 if (length(missing) > 0) {
   install.packages(missing, repos = "https://cloud.r-project.org")
