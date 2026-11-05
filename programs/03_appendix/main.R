@@ -9,3 +9,4 @@ source(file.path(programs_dir, "03_appendix", "figureA1.R"))  # Figure A1: annou
 source(file.path(programs_dir, "03_appendix", "figureA2.R"))  # Figure A2: raw share with a rule, event time
 source(file.path(programs_dir, "03_appendix", "figureA3.R"))  # Figure A3: event studies, all specifications
 source(file.path(programs_dir, "03_appendix", "figureA4.R"))  # Figure A4: counties observed by months since announcement
+source(file.path(programs_dir, "03_appendix", "figureA5.R"))  # Figure A5: comparison group for the July 2024 cohort

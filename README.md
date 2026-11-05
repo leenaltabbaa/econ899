@@ -179,6 +179,7 @@ The provided code reproduces:
 | Figure A2 | `03_appendix/figureA2.R` | `results/Figure A2 - Raw share with a regulation by months since announcement.png` | Raw share with a regulation, by months since announcement |
 | Figure A3 | `03_appendix/figureA3.R` | `results/Figure A3 - Event studies for all specifications.png` | Event studies, all specifications |
 | Figure A4 | `03_appendix/figureA4.R` | `results/Figure A4 - Counties observed by months since announcement.png` | Counties observed, by months since announcement |
+| Figure A5 | `03_appendix/figureA5.R` | `results/Figure A5 - Comparison group for the July 2024 cohort.png` | Comparison group for the July 2024 cohort, by months since announcement |
 
 ## Use of AI tools
 
